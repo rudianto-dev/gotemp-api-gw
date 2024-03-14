@@ -1,0 +1,20 @@
+{
+  "host": {
+    "address": ":8001",
+    "debug": false
+  },
+  "service": {
+    "user": {
+      "url": "http://localhost:8000"
+    }
+  },
+  "redis": {
+    "address": "localhost:6379",
+    "password": "password",
+    "db": 0,
+    "max_retry": 3
+  },
+  "graceful": {
+    "timeout_in_second": 30
+  }
+}
