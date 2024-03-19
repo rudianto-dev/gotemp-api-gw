@@ -7,6 +7,6 @@ import (
 )
 
 func (m *Module) UserHandlerAPI() userDomain.IHandlerAPI {
-	userUseCase := userUseCase.NewUseCase(m.infra.Logger, m.userService)
-	return userHandler.NewHandler(m.infra.Logger, userUseCase)
+	userUseCase := userUseCase.NewUseCase(m.srv.Logger, m.userService)
+	return userHandler.NewHandler(m.srv.Logger, userUseCase)
 }

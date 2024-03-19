@@ -10,14 +10,14 @@ import (
 	"github.com/rudianto-dev/gotemp-sdk/pkg/transporter"
 )
 
-type Infra struct {
+type Service struct {
 	Config     *configuration.ConfigurationSchema
 	Logger     *logger.Logger
 	Redis      *redis.Client
 	UserClient transporter.IHttpTransporter
 }
 
-func NewInfrastructure(cf *configuration.ConfigurationSchema) *Infra {
+func InitInfrastructure(cf *configuration.ConfigurationSchema) *Service {
 	// setup logger
 	logger := logger.NewLogger(cf.NewLogrus())
 	// setup http client
@@ -25,7 +25,7 @@ func NewInfrastructure(cf *configuration.ConfigurationSchema) *Infra {
 	// setup user client
 	userClient := transporter.NewHTTPTransporter(&httpClient, "api-gw", cf.Service.User.URL)
 
-	return &Infra{
+	return &Service{
 		Config:     cf,
 		Logger:     logger,
 		Redis:      cf.NewRedis(),

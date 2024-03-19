@@ -9,21 +9,21 @@ import (
 )
 
 type Module struct {
-	infra       *Infra
+	srv         *Service
 	userService userService.IUserService
 }
 
-type Infra struct {
+type Service struct {
 	Config     *configuration.ConfigurationSchema
 	Logger     *logger.Logger
 	Redis      *redis.Client
 	UserClient transporter.IHttpTransporter
 }
 
-func NewModule(infra *Infra) *Module {
-	userService := userService.NewService(infra.UserClient)
+func NewModule(srv *Service) *Module {
+	userService := userService.NewService(srv.UserClient)
 	module := &Module{
-		infra:       infra,
+		srv:         srv,
 		userService: userService,
 	}
 	return module
