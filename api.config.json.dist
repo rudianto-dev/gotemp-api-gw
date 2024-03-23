@@ -1,13 +1,14 @@
 {
   "host": {
-    "address": ":8001",
+    "address": ":8080",
     "debug": false
   },
-  "service": {
-    "user": {
-      "url": "http://localhost:8000"
+  "services": [
+    {
+      "name": "user",
+      "host": "http://localhost:8081"
     }
-  },
+  ],
   "redis": {
     "address": "localhost:6379",
     "password": "password",

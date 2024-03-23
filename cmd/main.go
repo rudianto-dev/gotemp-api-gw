@@ -14,7 +14,7 @@ func main() {
 	infrastructure := infrastructure.InitInfrastructure(configuration)
 
 	cmd.AddCommand(&cobra.Command{
-		Use:   "serve",
+		Use:   "api",
 		Short: "Run API Gateway",
 		Run: func(*cobra.Command, []string) {
 			infrastructure.RunAPI()

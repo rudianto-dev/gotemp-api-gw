@@ -7,10 +7,11 @@ import (
 )
 
 type ConfigurationSchema struct {
-	Host     Host     `json:"host"`
-	Service  Service  `json:"service"`
-	Redis    Redis    `json:"redis"`
-	Graceful Graceful `json:"graceful"`
+	Host     Host      `json:"host"`
+	Service  ServiceX  `json:"service"`
+	Services []Service `json:"services"`
+	Redis    Redis     `json:"redis"`
+	Graceful Graceful  `json:"graceful"`
 }
 
 type Host struct {
@@ -19,9 +20,13 @@ type Host struct {
 }
 
 type Service struct {
-	User UserService `json:"user"`
+	Name string `json:"name"`
+	Host string `json:"host"`
 }
 
+type ServiceX struct {
+	User UserService `json:"user"`
+}
 type UserService struct {
 	URL string `json:"url"`
 }
